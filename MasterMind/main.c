@@ -50,8 +50,8 @@ int main()
     must_init(font, "font");
 
     must_init(al_init_image_addon(), "image addon");
-    ALLEGRO_BITMAP* mysha = al_load_bitmap("imagens/mysha.png");
-    must_init(mysha, "mysha");
+    /*ALLEGRO_BITMAP* mysha = al_load_bitmap("imagens/mysha.png");
+    must_init(mysha, "mysha");*/
 
     must_init(al_init_primitives_addon(),"primitives");
 
@@ -97,7 +97,7 @@ int main()
         {
 
             al_clear_to_color(al_map_rgb(0, 0, 0));
-           // al_draw_text(font, al_map_rgb(255, 255, 255), 0, 0, 0, "Hello world!");
+
 
             //al_draw_bitmap(mysha, 100, 100, 0);
             //Primeiraa Fileira
@@ -151,7 +151,13 @@ int main()
 
 
             al_draw_line(850, 10, 850, SCREEN_H-10, al_map_rgb_f(1, 0, 0), 3);
-
+            al_draw_text(font, al_map_rgb(0, 0, 0), 640, 72, 0, "VER");
+            al_draw_text(font, al_map_rgb(0, 0, 0), 640, 172, 0, "VER");
+            al_draw_text(font, al_map_rgb(0, 0, 0), 640, 272, 0, "VER");
+            al_draw_text(font, al_map_rgb(0, 0, 0), 640, 372, 0, "VER");
+            al_draw_text(font, al_map_rgb(0, 0, 0), 640, 472, 0, "VER");
+            al_draw_text(font, al_map_rgb(0, 0, 0), 640, 572, 0, "VER");
+            al_draw_text(font, al_map_rgb(0, 0, 0), 640, 672, 0, "VER");
 
 
             al_flip_display();
@@ -161,7 +167,7 @@ int main()
         }
     }
 
-    al_destroy_bitmap(mysha);
+//    al_destroy_bitmap(mysha);
     al_destroy_font(font);
     al_destroy_display(disp);
     al_destroy_timer(timer);
