@@ -143,14 +143,57 @@ int main()
             al_draw_filled_circle(360, 675, 40, al_map_rgba_f(r, g, b, a));
             al_draw_filled_circle(490, 675, 40, al_map_rgba_f(r, g, b, a));
 
+            //Respostas Bolas brancas e vermelhas
+
+            al_draw_filled_circle(750,55,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,55,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(750,95,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,95,15, al_map_rgba_f(1,1,1,1));
+
+            al_draw_filled_circle(750,155,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,155,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(750,195,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,195,15, al_map_rgba_f(1,1,1,1));
+
+            al_draw_filled_circle(750,255,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,255,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(750,295,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,295,15, al_map_rgba_f(1,1,1,1));
+
+            al_draw_filled_circle(750,355,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,355,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(750,395,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,395,15, al_map_rgba_f(1,1,1,1));
+
+            al_draw_filled_circle(750,455,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,455,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(750,495,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,495,15, al_map_rgba_f(1,1,1,1));
+
+            al_draw_filled_circle(750,555,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,555,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(750,595,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,595,15, al_map_rgba_f(1,1,1,1));
+
+            al_draw_filled_circle(750,655,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,655,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(750,695,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(790,695,15, al_map_rgba_f(1,1,1,1));
+
             //COLUNA LATERAL
 
             al_draw_filled_circle(935,100,40, al_map_rgba_f(1,0,0,1));
             al_draw_filled_circle(935,200,40, al_map_rgba_f(0,1,0,1));
             al_draw_filled_circle(935,300,40, al_map_rgba_f(0,0,1,1));
+            al_draw_filled_circle(935,400,40, al_map_rgba_f(0,1,1,1));
 
+            al_draw_filled_circle(880,590,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(880,650,15, al_map_rgba_f(1,0,0,1));
 
+            //Linha
             al_draw_line(850, 10, 850, SCREEN_H-10, al_map_rgb_f(1, 0, 0), 3);
+
+            //Textos
             al_draw_text(font, al_map_rgb(0, 0, 0), 640, 72, 0, "VER");
             al_draw_text(font, al_map_rgb(0, 0, 0), 640, 172, 0, "VER");
             al_draw_text(font, al_map_rgb(0, 0, 0), 640, 272, 0, "VER");
@@ -158,6 +201,10 @@ int main()
             al_draw_text(font, al_map_rgb(0, 0, 0), 640, 472, 0, "VER");
             al_draw_text(font, al_map_rgb(0, 0, 0), 640, 572, 0, "VER");
             al_draw_text(font, al_map_rgb(0, 0, 0), 640, 672, 0, "VER");
+            al_draw_text(font, al_map_rgb(255, 255, 255), 910, 550, 0, "LEGENDA");
+            al_draw_text(font, al_map_rgb(255, 255, 255), 920, 580, 0, "POSICAO");
+            al_draw_text(font, al_map_rgb(255, 255, 255), 920, 600, 0, "CORRETA");
+            al_draw_text(font, al_map_rgb(255, 255, 255), 920, 650, 0, "COR EXISTE");
 
 
             al_flip_display();
