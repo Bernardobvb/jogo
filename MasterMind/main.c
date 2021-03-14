@@ -21,12 +21,6 @@ void must_init(bool test, const char *description)
 int main()
 {
 
-    ALLEGRO_COLOR black;
-
-    ALLEGRO_COLOR green;
-    ALLEGRO_COLOR yellow;
-
-
 
     must_init(al_init(), "allegro");
     must_init(al_install_keyboard(), "keyboard");
@@ -63,14 +57,12 @@ int main()
     bool redraw = true;
     ALLEGRO_EVENT event;
 
-    float r = 1;
-    float g = 1;
-    float b = 1;
-    float a = 1;
-    ALLEGRO_COLOR red  = al_map_rgba_f(r, g, b, a);
-    black = al_map_rgb_f(0, 0, 0);
-    green = al_map_rgb(0, 255, 0);
-    yellow = al_map_rgb_f(255, 255, 128);
+    ALLEGRO_COLOR vermelho = al_map_rgb(200, 60, 60);
+    ALLEGRO_COLOR azul = al_map_rgb(20, 20, 240);
+    ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);
+    ALLEGRO_COLOR amarelo = al_map_rgb(240, 240, 10);
+    ALLEGRO_COLOR verde = al_map_rgb(20, 240, 100);
+    ALLEGRO_COLOR cinza = al_map_rgb(128, 128, 128);
 
     al_start_timer(timer);
     while(1)
@@ -101,74 +93,74 @@ int main()
 
             //al_draw_bitmap(mysha, 100, 100, 0);
             //Primeiraa Fileira
-            al_draw_filled_rectangle(600,50,700,100, al_map_rgba_f(0,1,0,1));
-            al_draw_filled_circle(100, 75, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(230, 75, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(360, 75, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(490, 75, 40, al_map_rgba_f(r, g, b, a));
+            al_draw_filled_rectangle(600,50,700,100, verde);
+            al_draw_filled_circle(100, 75, 40, amarelo);
+            al_draw_filled_circle(230, 75, 40, branco);
+            al_draw_filled_circle(360, 75, 40, branco);
+            al_draw_filled_circle(490, 75, 40, branco);
             //Segunda Fileira
-            al_draw_filled_rectangle(600,150,700,200, al_map_rgba_f(0,1,0,1));
-            al_draw_filled_circle(100, 175, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(230, 175, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(360, 175, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(490, 175, 40, al_map_rgba_f(r, g, b, a));
+            al_draw_filled_rectangle(600,150,700,200, verde);
+            al_draw_filled_circle(100, 175, 40, branco);
+            al_draw_filled_circle(230, 175, 40, branco);
+            al_draw_filled_circle(360, 175, 40, branco);
+            al_draw_filled_circle(490, 175, 40, branco);
             //Terceira Fileira
-            al_draw_filled_rectangle(600,250,700,300, al_map_rgba_f(0,1,0,1));
-            al_draw_filled_circle(100, 275, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(230, 275, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(360, 275, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(490, 275, 40, al_map_rgba_f(r, g, b, a));
+            al_draw_filled_rectangle(600,250,700,300, verde);
+            al_draw_filled_circle(100, 275, 40, branco);
+            al_draw_filled_circle(230, 275, 40, branco);
+            al_draw_filled_circle(360, 275, 40, branco);
+            al_draw_filled_circle(490, 275, 40, branco);
             //Quarta Fileira
-            al_draw_filled_rectangle(600,350,700,400, al_map_rgba_f(0,1,0,1));
-            al_draw_filled_circle(100, 375, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(230, 375, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(360, 375, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(490, 375, 40, al_map_rgba_f(r, g, b, a));
+            al_draw_filled_rectangle(600,350,700,400, verde);
+            al_draw_filled_circle(100, 375, 40, branco);
+            al_draw_filled_circle(230, 375, 40, branco);
+            al_draw_filled_circle(360, 375, 40, branco);
+            al_draw_filled_circle(490, 375, 40, branco);
              //Quinta Fileira
-            al_draw_filled_rectangle(600,450,700,500, al_map_rgba_f(0,1,0,1));
-            al_draw_filled_circle(100, 475, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(230, 475, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(360, 475, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(490, 475, 40, al_map_rgba_f(r, g, b, a));
+            al_draw_filled_rectangle(600,450,700,500, verde);
+            al_draw_filled_circle(100, 475, 40, branco);
+            al_draw_filled_circle(230, 475, 40, branco);
+            al_draw_filled_circle(360, 475, 40, branco);
+            al_draw_filled_circle(490, 475, 40, branco);
             //Sexta Fileira
-            al_draw_filled_rectangle(600,550,700,600, al_map_rgba_f(0,1,0,1));
-            al_draw_filled_circle(100, 575, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(230, 575, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(360, 575, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(490, 575, 40, al_map_rgba_f(r, g, b, a));
+            al_draw_filled_rectangle(600,550,700,600, verde);
+            al_draw_filled_circle(100, 575, 40, branco);
+            al_draw_filled_circle(230, 575, 40, branco);
+            al_draw_filled_circle(360, 575, 40, branco);
+            al_draw_filled_circle(490, 575, 40, branco);
             //Sétima Fileira
-            al_draw_filled_rectangle(600,650,700,700, al_map_rgba_f(0,1,0,1));
-            al_draw_filled_circle(100, 675, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(230, 675, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(360, 675, 40, al_map_rgba_f(r, g, b, a));
-            al_draw_filled_circle(490, 675, 40, al_map_rgba_f(r, g, b, a));
+            al_draw_filled_rectangle(600,650,700,700, verde);
+            al_draw_filled_circle(100, 675, 40, branco);
+            al_draw_filled_circle(230, 675, 40, branco);
+            al_draw_filled_circle(360, 675, 40, branco);
+            al_draw_filled_circle(490, 675, 40, branco);
 
             //Respostas Bolas brancas e vermelhas
 
-            al_draw_filled_circle(750,55,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(790,55,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(750,95,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(790,95,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(750,55,15, cinza);
+            al_draw_filled_circle(790,55,15, cinza);
+            al_draw_filled_circle(750,95,15, cinza);
+            al_draw_filled_circle(790,95,15, cinza);
 
-            al_draw_filled_circle(750,155,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(790,155,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(750,195,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(790,195,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(750,155,15, cinza);
+            al_draw_filled_circle(790,155,15, cinza);
+            al_draw_filled_circle(750,195,15, cinza);
+            al_draw_filled_circle(790,195,15, cinza);
 
-            al_draw_filled_circle(750,255,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(790,255,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(750,295,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(790,295,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(750,255,15, cinza);
+            al_draw_filled_circle(790,255,15, cinza);
+            al_draw_filled_circle(750,295,15, cinza);
+            al_draw_filled_circle(790,295,15, cinza);
 
-            al_draw_filled_circle(750,355,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(790,355,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(750,395,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(790,395,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(750,355,15, cinza);
+            al_draw_filled_circle(790,355,15, cinza);
+            al_draw_filled_circle(750,395,15, cinza);
+            al_draw_filled_circle(790,395,15, cinza);
 
-            al_draw_filled_circle(750,455,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(790,455,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(750,495,15, al_map_rgba_f(1,1,1,1));
-            al_draw_filled_circle(790,495,15, al_map_rgba_f(1,1,1,1));
+            al_draw_filled_circle(750,455,15, cinza);
+            al_draw_filled_circle(790,455,15, cinza);
+            al_draw_filled_circle(750,495,15, cinza);
+            al_draw_filled_circle(790,495,15, cinza);
 
             al_draw_filled_circle(750,555,15, al_map_rgba_f(1,1,1,1));
             al_draw_filled_circle(790,555,15, al_map_rgba_f(1,1,1,1));
