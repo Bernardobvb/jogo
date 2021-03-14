@@ -61,11 +61,15 @@ int main()
     /*ALLEGRO_BITMAP* mysha = al_load_bitmap("imagens/mysha.png");
     must_init(mysha, "mysha");*/
 
+    al_install_mouse();
+    must_init(al_install_mouse(), "mouse");
+
     must_init(al_init_primitives_addon(),"primitives");
 
     al_register_event_source(queue, al_get_keyboard_event_source());
     al_register_event_source(queue, al_get_display_event_source(disp));
     al_register_event_source(queue, al_get_timer_event_source(timer));
+    al_register_event_source(queue, al_get_mouse_event_source());
 
     bool done = false;
     bool redraw = true;
@@ -99,12 +103,20 @@ int main()
     al_start_timer(timer);
     while(1)
     {
-        al_wait_for_event(queue, &event);
 
+        al_wait_for_event(queue, &event);
+        ALLEGRO_EVENT evento;
         switch(event.type)
         {
             case ALLEGRO_EVENT_TIMER:
                 // game logic goes here.
+
+                if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
+                if (evento.mouse.x >= 895 &&
+                evento.mouse.x <= 975 && evento.mouse.y <= 140 &&
+                evento.mouse.y >= 60){
+                    matriz[0][0]= vermelho;
+                }}
                 redraw = true;
                 break;
 
@@ -248,4 +260,78 @@ int main()
 
     return 0;
 }
+//Código para o sorteio de Cores e Sequencia
+
+/*
+
+    int vermelho = 0;
+    int amarelo = 1;
+    int verde = 2;
+
+    int vetorBolas[3];
+
+    for(i = 0;  i<3; i++){
+
+        int c = 0;
+
+        c = rand()%3;
+
+        vetorBolas[i] = c;
+    }
+
+        if (vetorBolas[0] == 0){
+
+            printf(" V 0 Bola vermelha\n");
+
+        }else{
+
+        if (vetorBolas[0] == 1){
+
+            printf(" V 0 Bola Amarela\n");
+
+        }else{
+
+            if (vetorBolas[0]== 2){
+
+            printf("V 0 Bola Verde\n");
+        }
+        }}
+
+        if (vetorBolas[1] == 0){
+
+            printf(" V 1 Bola vermelha\n");
+
+        }else{
+
+        if (vetorBolas[1] == 1){
+
+            printf(" V 1 Bola Amarela\n");
+
+        }else{
+
+            if (vetorBolas[1]== 2){
+
+            printf("V 1 Bola Verde\n");
+        }
+        }}
+
+         if (vetorBolas[2] == 0){
+
+            printf(" V 2 Bola vermelha\n");
+
+        }else{
+
+        if (vetorBolas[2] == 1){
+
+            printf(" V 2 Bola Amarela\n");
+
+        }else{
+
+            if (vetorBolas[2]== 2){
+
+            printf("V 2 Bola Verde\n");
+        }
+        }}
+
+*/
 
