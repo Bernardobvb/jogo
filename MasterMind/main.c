@@ -7,8 +7,23 @@
 #include "allegro5\allegro_color.h"
 
 
+
 const int SCREEN_W = 1024;
 const int SCREEN_H = 768;
+
+void aniFundo(){
+      //quadrado no fundo
+    int pos_x;
+    int pos_y;
+    int i;
+
+    pos_x = rand()%SCREEN_W;
+    pos_y = rand()%SCREEN_H;
+
+    for(i =0; i<128; i++){
+       al_draw_filled_rectangle(pos_x, pos_y, pos_x + 4, pos_y + 4, al_map_rgb(128,128,128));
+    }
+}
 
 void must_init(bool test, const char *description)
 {
@@ -17,7 +32,6 @@ void must_init(bool test, const char *description)
     printf("couldn't initialize %s\n", description);
     exit(1);
 }
-
 int main()
 {
 
@@ -25,7 +39,7 @@ int main()
     must_init(al_init(), "allegro");
     must_init(al_install_keyboard(), "keyboard");
 
-    ALLEGRO_TIMER* timer = al_create_timer(1.0 / 30.0);
+    ALLEGRO_TIMER* timer = al_create_timer(1.0 / 20.0);
     must_init(timer, "timer");
 
     ALLEGRO_EVENT_QUEUE* queue = al_create_event_queue();
@@ -57,6 +71,9 @@ int main()
     bool redraw = true;
     ALLEGRO_EVENT event;
 
+
+
+
     ALLEGRO_COLOR vermelho = al_map_rgb(200, 60, 60);
     ALLEGRO_COLOR azul = al_map_rgb(20, 20, 240);
     ALLEGRO_COLOR branco = al_map_rgb(255, 255, 255);
@@ -69,7 +86,7 @@ int main()
     int j;
     for(i=0; i<7; i++){
         for(j=0; j<4; j++){
-            matriz[i][j] = vermelho;
+            matriz[i][j] = branco;
         }
     }
 
@@ -104,7 +121,9 @@ int main()
         {
 
             al_clear_to_color(al_map_rgb(0, 0, 0));
-
+            for(i=0; i<10; i++){
+                aniFundo();
+            }
 
             //al_draw_bitmap(mysha, 100, 100, 0);
             //Primeiraa Fileira
@@ -198,7 +217,7 @@ int main()
             al_draw_filled_circle(880,650,15, vermelho);
 
             //Linha
-            al_draw_line(850, 10, 850, SCREEN_H-10, al_map_rgb_f(1, 0, 0), 3);
+            al_draw_line(848, 10, 848, SCREEN_H-10, cinza, 5);
 
             //Textos
             al_draw_text(font, al_map_rgb(0, 0, 0), 640, 72, 0, "VER");
