@@ -516,7 +516,7 @@
 1372639132 c:\allegro\allegromingw\include\allegro5\allegro_color.h
 	"allegro5/allegro.h"
 
-1615733946 source:e:\projetoscodeblocks\jogo\mastermind\main.c
+1615935227 source:e:\projetoscodeblocks\jogo\mastermind\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro5/allegro5.h>
@@ -524,5 +524,4 @@
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_primitives.h>
 	"allegro5\allegro_color.h"
-	<allegro5/allegro_ttf.h>
 

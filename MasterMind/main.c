@@ -34,7 +34,8 @@ void must_init(bool test, const char *description)
 }
 int main()
 {
-
+    int px = SCREEN_W/2;
+    int py = SCREEN_H/2;
 
     must_init(al_init(), "allegro");
     must_init(al_install_keyboard(), "keyboard");
@@ -73,10 +74,6 @@ int main()
 
     bool done = false;
     bool redraw = true;
-    ALLEGRO_EVENT event;
-
-
-
 
     ALLEGRO_COLOR vermelho = al_map_rgb(200, 60, 60);
     ALLEGRO_COLOR azul = al_map_rgb(20, 20, 240);
@@ -100,23 +97,56 @@ int main()
             matrizResposta[i][j] = cinza;
         }
     }
+    int cl = 0;
+    int cc = 0;
     al_start_timer(timer);
     while(1)
     {
+        ALLEGRO_EVENT event;
 
         al_wait_for_event(queue, &event);
-        ALLEGRO_EVENT evento;
+        //ALLEGRO_EVENT evento;
         switch(event.type)
         {
+
+
+
             case ALLEGRO_EVENT_TIMER:
                 // game logic goes here.
+                case ALLEGRO_EVENT_MOUSE_AXES:
+                    px = event.mouse.x;
+                    py = event.mouse.y;
+                case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
 
-                if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_UP){
-                if (evento.mouse.x >= 895 &&
-                evento.mouse.x <= 975 && evento.mouse.y <= 140 &&
-                evento.mouse.y >= 60){
-                    matriz[0][0]= vermelho;
-                }}
+                    if (event.mouse.button & 1){
+
+                    if (event.mouse.x >= 895 &&
+                event.mouse.x <= 975 && event.mouse.y <= 140 &&
+                event.mouse.y >= 60){
+                    matriz[cc][cl]= vermelho;
+                    cl = cl+ 1;
+                    }
+                    else if (event.mouse.x >= 895 &&
+                event.mouse.x <= 975 && event.mouse.y <= 240 &&
+                event.mouse.y >= 160){
+                   matriz[cc][cl]= amarelo;
+                    cl = cl+ 1;
+                }
+                     else if (event.mouse.x >= 895 &&
+                event.mouse.x <= 975 && event.mouse.y <= 340 &&
+                event.mouse.y >= 260){
+                    matriz[cc][cl]= verde;
+                    cl = cl+ 1;}
+                     else if (event.mouse.x >= 895 &&
+                event.mouse.x <= 975 && event.mouse.y <= 440 &&
+                event.mouse.y >= 360){
+                    matriz[cc][cl]= azul;
+                    cl = cl+ 1;}
+                    else if (event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 100 && event.mouse.y >= 50 ){
+
+                        }
+                    }
+
                 redraw = true;
                 break;
 
@@ -133,12 +163,15 @@ int main()
         {
 
             al_clear_to_color(al_map_rgb(0, 0, 0));
-            for(i=0; i<10; i++){
+           for(i=0; i<10; i++){
                 aniFundo();
             }
 
-            //al_draw_bitmap(mysha, 100, 100, 0);
+
             //Primeiraa Fileira
+
+
+
             al_draw_filled_rectangle(600,50,700,100, verde);
             al_draw_filled_circle(100, 75, 40, matriz[0][0]);
             al_draw_filled_circle(230, 75, 40, matriz[0][1]);
