@@ -5,17 +5,21 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 #include "allegro5\allegro_color.h"
+#include <time.h>
 
 
 
 const int SCREEN_W = 1024;
 const int SCREEN_H = 768;
 
-void fResposta(ALLEGRO_COLOR matrizResposta[7][4], int seq[],int v[4], int a, ALLEGRO_COLOR branco, ALLEGRO_COLOR vermelho, ALLEGRO_COLOR cinza){
+
+
+void fResposta(ALLEGRO_COLOR matrizResposta[7][4], int seq[],int v[4], int a, ALLEGRO_COLOR branco, ALLEGRO_COLOR vermelho, ALLEGRO_COLOR cinza, int mode){
+                            mode=0;
                             int c = a;
                             if (seq[0] == v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] == v[3]){
                             matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = matrizResposta[c][3] = branco;
-
+                            return mode = 1;
                             }else if(seq[0] == v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] != v[3]){
                             matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = branco;
                             matrizResposta[c][3] = cinza;
@@ -131,8 +135,6 @@ void fResposta(ALLEGRO_COLOR matrizResposta[7][4], int seq[],int v[4], int a, AL
                                     matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = matrizResposta[c][3] = vermelho;
                                 }
 
-
-
                             return;
 
                         }
@@ -161,9 +163,7 @@ void must_init(bool test, const char *description)
 }
 int main()
 {
-    int px = SCREEN_W/2;
-    int py = SCREEN_H/2;
-
+    int mode=0;
     must_init(al_init(), "allegro");
     must_init(al_install_keyboard(), "keyboard");
 
@@ -186,8 +186,6 @@ int main()
     must_init(font, "font");
 
     must_init(al_init_image_addon(), "image addon");
-    /*ALLEGRO_BITMAP* mysha = al_load_bitmap("imagens/mysha.png");
-    must_init(mysha, "mysha");*/
 
     al_install_mouse();
     must_init(al_install_mouse(), "mouse");
@@ -201,6 +199,9 @@ int main()
 
     bool done = false;
     bool redraw = true;
+
+    ALLEGRO_BITMAP * final = NULL;
+    final = al_load_bitmap("imagens/final.png");
 
     ALLEGRO_COLOR vermelho = al_map_rgb(200, 60, 60);
     ALLEGRO_COLOR azul = al_map_rgb(20, 20, 240);
@@ -234,13 +235,11 @@ int main()
     int green = 2;
     int blue = 3;
     int v[4];
-
+    srand((unsigned)time(NULL));
     for(i = 0;  i<4; i++){
 
         int c = 0;
-
         c = rand()%4;
-
         v[i] = c;
     }
         printf("%d -- %d -- %d -- %d ", v[0], v[1], v[2], v[3]);
@@ -257,9 +256,6 @@ int main()
         int seq[4];
             case ALLEGRO_EVENT_TIMER:
                 // game logic goes here.
-                case ALLEGRO_EVENT_MOUSE_AXES:
-                    px = event.mouse.x;
-                    py = event.mouse.y;
                 case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
 
                     if (event.mouse.button & 1){
@@ -291,26 +287,26 @@ int main()
                     seq[cl] = 3;
                     cl = cl+ 1;}
                     else if (event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 100 && event.mouse.y >= 50 ){
-                            fResposta( matrizResposta, seq, v, 0 , branco,  vermelho, cinza);
-                            cl = 0; cc = 1;
-
+                            if(cc==0){fResposta( matrizResposta, seq, v, 0 , branco,  vermelho, cinza,mode);
+                            cl = 0; cc = 1;}
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 200 && event.mouse.y >= 150 ){
-                                 fResposta( matrizResposta, seq, v, 1 , branco,  vermelho, cinza);
-                                  cl = 0; cc = 2;
+                                 if(cc==1){fResposta( matrizResposta, seq, v, 1 , branco,  vermelho, cinza,mode);
+                                  cl = 0; cc = 2;}
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 300 && event.mouse.y >= 250 ){
-                                 fResposta( matrizResposta, seq, v, 2 , branco,  vermelho, cinza);
-                                  cl = 0; cc = 3;
+                                 if(cc==2){fResposta( matrizResposta, seq, v, 2 , branco,  vermelho, cinza,mode);
+                                  cl = 0; cc = 3;}
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 400 && event.mouse.y >= 350 ){
-                                 fResposta( matrizResposta, seq, v, 3 , branco,  vermelho, cinza);
-                                  cl = 0; cc = 4;
+                                 if(cc==3){fResposta( matrizResposta, seq, v, 3 , branco,  vermelho, cinza,mode);
+                                  cl = 0; cc = 4;}
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 500 && event.mouse.y >= 450 ){
-                                 fResposta( matrizResposta, seq, v, 4 , branco,  vermelho, cinza);
-                                  cl = 0; cc = 5;
+                                if(cc==4){fResposta( matrizResposta, seq, v, 4 , branco,  vermelho, cinza,mode);
+                                  cl = 0; cc = 5;}
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 600 && event.mouse.y >= 550 ){
-                                 fResposta( matrizResposta, seq, v, 5 , branco,  vermelho, cinza);
-                                  cl = 0;cc = 6;
+                                 if(cc==5){fResposta( matrizResposta, seq, v, 5 , branco,  vermelho, cinza,mode);
+                                  cl = 0;cc = 6;}
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 700 && event.mouse.y >= 650 ){
-                                 fResposta( matrizResposta, seq, v, 6 , branco,  vermelho, cinza);
+                                 if(cc==6){fResposta( matrizResposta, seq, v, 6 , branco,  vermelho, cinza,mode);
+                                 cc=7;}
 
                             }
 
@@ -452,7 +448,9 @@ int main()
             al_draw_text(font, al_map_rgb(255, 255, 255), 920, 580, 0, "POSICAO");
             al_draw_text(font, al_map_rgb(255, 255, 255), 920, 600, 0, "CORRETA");
             al_draw_text(font, al_map_rgb(255, 255, 255), 920, 650, 0, "COR EXISTE");
-
+            if(mode==1){
+                al_draw_bitmap(final, SCREEN_W/2-400, SCREEN_H/2-400, 0);
+            }
 
             al_flip_display();
 
@@ -461,7 +459,7 @@ int main()
         }
     }
 
-//    al_destroy_bitmap(mysha);
+
     al_destroy_font(font);
     al_destroy_display(disp);
     al_destroy_timer(timer);
