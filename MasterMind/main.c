@@ -230,11 +230,56 @@ int main()
                                     if (seq[3] == v[2]){
                                     matrizResposta[0][3] = vermelho;}}}
 
-                            else if (seq[0] != v[0] && seq[1] != v[1] && seq[2] != v[2] && seq[3] == v[3]){
+                            else if (seq[0] == v[0] && seq[1] != v[1] && seq[2] != v[2] && seq[3] != v[3]){
                                     matrizResposta [0][0] = branco;
+                                    int cont = 2;
+                                    if (seq[1] == v[2] || seq[1] == v[3]){
+                                        matrizResposta[0][1]=vermelho;
+                                        cont = 1;
+                                      if(seq[2] == v[1] || seq[2] == v[3]){
+                                        matrizResposta[0][3-cont] = vermelho;
+                                        cont = 0;
+                                       if(seq[3] == v[1] || seq[3] == v[2]){
+                                        matrizResposta[0][3-cont] = vermelho;
+                                       }}}}
+                            else if (seq[0] != v[0] && seq[1] == v[1] && seq[2] != v[2] && seq[3] != v[3]){
+                                    matrizResposta [0][0] = branco;
+                                    int cont = 2;
+                                    if (seq[0] == v[2] || seq[0] == v[3]){
+                                        matrizResposta[0][1]=vermelho;
+                                        cont = 1;
+                                      if(seq[2] == v[0] || seq[2] == v[3]){
+                                        matrizResposta[0][3-cont] = vermelho;
+                                        cont = 0;
+                                       if(seq[3] == v[0] || seq[3] == v[2]){
+                                        matrizResposta[0][3-cont] = vermelho;
+                                       }}}}
+                              else if (seq[0] != v[0] && seq[1] != v[1] && seq[2] == v[2] && seq[3] != v[3]){
+                                    matrizResposta [0][0] = branco;
+                                    int cont = 2;
+                                    if (seq[0] == v[1] || seq[0] == v[3]){
+                                        matrizResposta[0][1]=vermelho;
+                                        cont = 1;
+                                      if(seq[1] == v[0] || seq[1] == v[3]){
+                                        matrizResposta[0][3-cont] = vermelho;
+                                        cont = 0;
+                                       if(seq[3] == v[0] || seq[3] == v[1]){
+                                        matrizResposta[0][3-cont] = vermelho;
+                                       }}}}
+                                else if (seq[0] != v[0] && seq[1] != v[1] && seq[2] != v[2] && seq[3] == v[3]){
+                                    matrizResposta [0][0] = branco;
+                                    int cont = 2;
+                                    if (seq[0] == v[1] || seq[0] == v[2]){
+                                        matrizResposta[0][1]=vermelho;
+                                        cont = 1;
+                                      if(seq[1] == v[0] || seq[1] == v[2]){
+                                        matrizResposta[0][3-cont] = vermelho;
+                                        cont = 0;
+                                       if(seq[2] == v[0] || seq[2] == v[1]){
+                                        matrizResposta[0][3-cont] = vermelho;
+                                       }}}}
 
 
-                            }
 
 
                         }
