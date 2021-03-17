@@ -100,6 +100,25 @@ int main()
     int cl = 0;
     int cc = 0;
     al_start_timer(timer);
+
+    //SORTEIO BOLAS CORRETAS
+    int red = 0;
+    int yellow = 1;
+    int green = 2;
+    int blue = 3;
+    int v[4];
+
+    for(i = 0;  i<4; i++){
+
+        int c = 0;
+
+        c = rand()%4;
+
+        v[i] = c;
+    }
+        printf("%d -- %d -- %d -- %d ", v[0], v[1], v[2], v[3]);
+
+
     while(1)
     {
         ALLEGRO_EVENT event;
@@ -108,9 +127,7 @@ int main()
         //ALLEGRO_EVENT evento;
         switch(event.type)
         {
-
-
-
+        int seq[4];
             case ALLEGRO_EVENT_TIMER:
                 // game logic goes here.
                 case ALLEGRO_EVENT_MOUSE_AXES:
@@ -124,25 +141,101 @@ int main()
                 event.mouse.x <= 975 && event.mouse.y <= 140 &&
                 event.mouse.y >= 60){
                     matriz[cc][cl]= vermelho;
+                    seq[cl] = 0;
                     cl = cl+ 1;
                     }
                     else if (event.mouse.x >= 895 &&
                 event.mouse.x <= 975 && event.mouse.y <= 240 &&
                 event.mouse.y >= 160){
                    matriz[cc][cl]= amarelo;
+                    seq[cl]= 1;
                     cl = cl+ 1;
                 }
                      else if (event.mouse.x >= 895 &&
                 event.mouse.x <= 975 && event.mouse.y <= 340 &&
                 event.mouse.y >= 260){
                     matriz[cc][cl]= verde;
+                    seq[cl] = 2;
                     cl = cl+ 1;}
                      else if (event.mouse.x >= 895 &&
                 event.mouse.x <= 975 && event.mouse.y <= 440 &&
                 event.mouse.y >= 360){
                     matriz[cc][cl]= azul;
+                    seq[cl] = 3;
                     cl = cl+ 1;}
                     else if (event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 100 && event.mouse.y >= 50 ){
+                            if (seq[0] == v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] == v[3]){
+                            matrizResposta[0][0] = matrizResposta[0][1] = matrizResposta[0][2] = matrizResposta[0][3] = branco;
+
+                            }else if(seq[0] == v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] != v[3]){
+                            matrizResposta[0][0] = matrizResposta[0][1] = matrizResposta[0][2] = branco;
+                            matrizResposta[0][3] = cinza;
+                            }else if (seq[0] == v[0] && seq[1] == v[1] && seq[2] != v[2] && seq[3] == v[3]){
+                            matrizResposta[0][0] = matrizResposta[0][1] = matrizResposta[0][2] = branco;
+                            matrizResposta[0][3] = cinza;
+                            }else if (seq[0] == v[0] && seq[1] != v[1] && seq[2] == v[2] && seq[3] == v[3]){
+                            matrizResposta[0][0] = matrizResposta[0][1] = matrizResposta[0][2] = branco;
+                            matrizResposta[0][3] = cinza;
+                            }else if (seq[0] != v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] == v[3]){
+                            matrizResposta[0][0] = matrizResposta[0][1] = matrizResposta[0][2] = branco;
+                            matrizResposta[0][3] = cinza;
+                            }
+
+                            else if(seq[0] != v[0] && seq[1] != v[1] && seq[2] == v[2] && seq[3] == v[3]){
+                                matrizResposta[0][0] = matrizResposta[0][1] = branco;
+                                int cont = 1;
+                                if (seq[0] == v[1]){
+                                    matrizResposta[0][2] = vermelho;
+                                    cont = 0;
+                                 if (seq[1] == v[0]){
+                                    matrizResposta[0][3-cont] = vermelho;}}}
+                           else if(seq[0] != v[0] && seq[1] == v[1] && seq[2] != v[2] && seq[3] == v[3]){
+                                matrizResposta[0][0] = matrizResposta[0][1] = branco;
+                                int cont = 1;
+                                if (seq[0] == v[2]){
+                                    matrizResposta[0][2] = vermelho;
+                                    cont = 0;
+                                 if (seq[2] == v[0]){
+                                    matrizResposta[0][3-cont] = vermelho;}}}
+                            else if(seq[0] != v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] != v[3]){
+                                matrizResposta[0][0] = matrizResposta[0][1] = branco;
+                                int cont = 1;
+                                if (seq[0] == v[3]){
+                                    matrizResposta[0][2] = vermelho;
+                                    cont = 0;
+                                   if (seq[3] == v[0]){
+                                    matrizResposta[0][3-cont] = vermelho;}}}
+                            else if(seq[0] == v[0] && seq[1] != v[1] && seq[2] != v[2] && seq[3] == v[3]){
+                                matrizResposta[0][0] = matrizResposta[0][1] = branco;
+                                int cont =1;
+                                if (seq[1] == v[2]){
+                                    matrizResposta[0][2] = vermelho;
+                                    cont = 0;
+                                if (seq[2] == v[1]){
+                                    matrizResposta[0][3-cont] = vermelho;}}}
+                             else if(seq[0] == v[0] && seq[1] != v[1] && seq[2] == v[2] && seq[3] != v[3]){
+                                matrizResposta[0][0] = matrizResposta[0][1] = branco;
+                                int cont =1;
+                                if (seq[1] == v[3]){
+                                    matrizResposta[0][2] = vermelho;
+                                    cont = 0;
+                                 if (seq[3] == v[1]){
+                                    matrizResposta[0][3-cont] = vermelho;}}}
+                             else if(seq[0] == v[0] && seq[1] == v[1] && seq[2] != v[2] && seq[3] != v[3]){
+                                matrizResposta[0][0] = matrizResposta[0][1] = branco;
+                                int cont =1;
+                                if (seq[2] == v[3]){
+                                    matrizResposta[0][2] = vermelho;
+                                    cont = 0;
+                                    if (seq[3] == v[2]){
+                                    matrizResposta[0][3] = vermelho;}}}
+
+                            else if (seq[0] != v[0] && seq[1] != v[1] && seq[2] != v[2] && seq[3] == v[3]){
+                                    matrizResposta [0][0] = branco;
+
+
+                            }
+
 
                         }
                     }
@@ -293,78 +386,5 @@ int main()
 
     return 0;
 }
-//Código para o sorteio de Cores e Sequencia
 
-/*
-
-    int vermelho = 0;
-    int amarelo = 1;
-    int verde = 2;
-
-    int vetorBolas[3];
-
-    for(i = 0;  i<3; i++){
-
-        int c = 0;
-
-        c = rand()%3;
-
-        vetorBolas[i] = c;
-    }
-
-        if (vetorBolas[0] == 0){
-
-            printf(" V 0 Bola vermelha\n");
-
-        }else{
-
-        if (vetorBolas[0] == 1){
-
-            printf(" V 0 Bola Amarela\n");
-
-        }else{
-
-            if (vetorBolas[0]== 2){
-
-            printf("V 0 Bola Verde\n");
-        }
-        }}
-
-        if (vetorBolas[1] == 0){
-
-            printf(" V 1 Bola vermelha\n");
-
-        }else{
-
-        if (vetorBolas[1] == 1){
-
-            printf(" V 1 Bola Amarela\n");
-
-        }else{
-
-            if (vetorBolas[1]== 2){
-
-            printf("V 1 Bola Verde\n");
-        }
-        }}
-
-         if (vetorBolas[2] == 0){
-
-            printf(" V 2 Bola vermelha\n");
-
-        }else{
-
-        if (vetorBolas[2] == 1){
-
-            printf(" V 2 Bola Amarela\n");
-
-        }else{
-
-            if (vetorBolas[2]== 2){
-
-            printf("V 2 Bola Verde\n");
-        }
-        }}
-
-*/
 
