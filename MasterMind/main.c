@@ -18,11 +18,11 @@ void winner(){
     al_draw_filled_rectangle(200,200,800,800, al_map_rgb(0,0,0));
 }
 
-void fResposta(ALLEGRO_COLOR matrizResposta[7][4], int seq[],int v[4], int a, ALLEGRO_COLOR branco, ALLEGRO_COLOR vermelho, ALLEGRO_COLOR cinza, int mode){
+int fResposta(ALLEGRO_COLOR matrizResposta[7][4], int seq[],int v[4], int a, ALLEGRO_COLOR branco, ALLEGRO_COLOR vermelho, ALLEGRO_COLOR cinza){
                             int c = a;
                             if (seq[0] == v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] == v[3]){
                             matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = matrizResposta[c][3] = branco;
-                            mode =1;
+                            return 1;
                             }else if(seq[0] == v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] != v[3]){
                             matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = branco;
                             matrizResposta[c][3] = cinza;
@@ -138,7 +138,7 @@ void fResposta(ALLEGRO_COLOR matrizResposta[7][4], int seq[],int v[4], int a, AL
                                     matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = matrizResposta[c][3] = vermelho;
                                 }
 
-                            return mode;
+                            return 0;
 
                         }
 
@@ -298,25 +298,32 @@ int main()
                     seq[cl] = 3;
                     cl = cl+ 1;}
                     else if (event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 100 && event.mouse.y >= 50 ){
-                            if(cc==0){fResposta( matrizResposta, seq, v, 0 , branco,  vermelho, cinza,mode);
+                            if(cc==0){
+                                       mode = fResposta( matrizResposta, seq, v, 0 , branco,  vermelho, cinza);
                             cl = 0; cc = 1;}
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 200 && event.mouse.y >= 150 ){
-                                 if(cc==1){fResposta( matrizResposta, seq, v, 1 , branco,  vermelho, cinza,mode);
+                                 if(cc==1){
+                                       mode = fResposta( matrizResposta, seq, v, 1 , branco,  vermelho, cinza);
                                   cl = 0; cc = 2;}
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 300 && event.mouse.y >= 250 ){
-                                 if(cc==2){fResposta( matrizResposta, seq, v, 2 , branco,  vermelho, cinza,mode);
+                                 if(cc==2){
+                                       mode = fResposta( matrizResposta, seq, v, 2 , branco,  vermelho, cinza);
                                   cl = 0; cc = 3;}
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 400 && event.mouse.y >= 350 ){
-                                 if(cc==3){fResposta( matrizResposta, seq, v, 3 , branco,  vermelho, cinza,mode);
+                                 if(cc==3){
+                                       mode = fResposta( matrizResposta, seq, v, 3 , branco,  vermelho, cinza);
                                   cl = 0; cc = 4;}
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 500 && event.mouse.y >= 450 ){
-                                if(cc==4){fResposta( matrizResposta, seq, v, 4 , branco,  vermelho, cinza,mode);
+                                if(cc==4){
+                                       mode = fResposta( matrizResposta, seq, v, 4 , branco,  vermelho, cinza);
                                   cl = 0; cc = 5;}
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 600 && event.mouse.y >= 550 ){
-                                 if(cc==5){fResposta( matrizResposta, seq, v, 5 , branco,  vermelho, cinza,mode);
+                                 if(cc==5){
+                                       mode = fResposta( matrizResposta, seq, v, 5 , branco,  vermelho, cinza);
                                   cl = 0;cc = 6;}
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 700 && event.mouse.y >= 650 ){
-                                 if(cc==6){fResposta( matrizResposta, seq, v, 6 , branco,  vermelho, cinza,mode);
+                                 if(cc==6){
+                                       mode = fResposta( matrizResposta, seq, v, 6 , branco,  vermelho, cinza);
                                  cc=7;}
 
                             }
@@ -461,7 +468,18 @@ int main()
             al_draw_text(font, al_map_rgb(255, 255, 255), 920, 650, 0, "COR EXISTE");
 
             if(mode == 1){
-                al_draw_filled_rectangle(SCREEN_W/9, SCREEN_H/9, SCREEN_W - SCREEN_W/9 , SCREEN_H - SCREEN_H/9, al_map_rgb(0,0,0));}
+                    int ponto = 10 - cc;
+                    al_destroy_sample(deep_Urban);
+                    al_draw_filled_rectangle(SCREEN_W/9, SCREEN_H/9, SCREEN_W - SCREEN_W/9 , SCREEN_H - SCREEN_H/9, al_map_rgb(0,0,0));
+                    al_draw_text(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 50, SCREEN_H/2, 0, "VOCE GANHOU");
+                    al_draw_text(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 50, SCREEN_H/2 + 30, 0, "SUA PONTUACAO");
+            }
+
+            if(cc == 7){
+                    al_destroy_sample(deep_Urban);
+                    al_draw_filled_rectangle(SCREEN_W/9, SCREEN_H/9, SCREEN_W - SCREEN_W/9 , SCREEN_H - SCREEN_H/9, al_map_rgb(0,0,0));
+                    al_draw_text(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 50, SCREEN_H/2, 0, "VOCE PERDEU");
+                    al_draw_text(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 100, SCREEN_H/2 + 30, 0, "CLIQUE PARA REINICIAR");}
 
 
 
