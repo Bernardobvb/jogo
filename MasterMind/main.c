@@ -6,20 +6,23 @@
 #include <allegro5/allegro_primitives.h>
 #include "allegro5\allegro_color.h"
 #include <time.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
 
 
 
 const int SCREEN_W = 1024;
 const int SCREEN_H = 768;
 
-
+void winner(){
+    al_draw_filled_rectangle(200,200,800,800, al_map_rgb(0,0,0));
+}
 
 void fResposta(ALLEGRO_COLOR matrizResposta[7][4], int seq[],int v[4], int a, ALLEGRO_COLOR branco, ALLEGRO_COLOR vermelho, ALLEGRO_COLOR cinza, int mode){
-                            mode=0;
                             int c = a;
                             if (seq[0] == v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] == v[3]){
                             matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = matrizResposta[c][3] = branco;
-                            return mode = 1;
+                            mode =1;
                             }else if(seq[0] == v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] != v[3]){
                             matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = branco;
                             matrizResposta[c][3] = cinza;
@@ -135,7 +138,7 @@ void fResposta(ALLEGRO_COLOR matrizResposta[7][4], int seq[],int v[4], int a, AL
                                     matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = matrizResposta[c][3] = vermelho;
                                 }
 
-                            return;
+                            return mode;
 
                         }
 
@@ -190,7 +193,12 @@ int main()
     al_install_mouse();
     must_init(al_install_mouse(), "mouse");
 
+
     must_init(al_init_primitives_addon(),"primitives");
+
+    must_init(al_install_audio(), "audio");
+    must_init(al_init_acodec_addon(), "audio codecs");
+    must_init(al_reserve_samples(16), "reserve samples");
 
     al_register_event_source(queue, al_get_keyboard_event_source());
     al_register_event_source(queue, al_get_display_event_source(disp));
@@ -199,6 +207,9 @@ int main()
 
     bool done = false;
     bool redraw = true;
+
+    ALLEGRO_SAMPLE* deep_Urban = al_load_sample("deep-urban.wav");
+    must_init(deep_Urban, "deep-urban");
 
     ALLEGRO_BITMAP * final = NULL;
     final = al_load_bitmap("imagens/final.png");
@@ -248,14 +259,14 @@ int main()
     while(1)
     {
         ALLEGRO_EVENT event;
-
+        al_play_sample(deep_Urban, 0.1, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
         al_wait_for_event(queue, &event);
         //ALLEGRO_EVENT evento;
         switch(event.type)
         {
         int seq[4];
             case ALLEGRO_EVENT_TIMER:
-                // game logic goes here.
+
                 case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
 
                     if (event.mouse.button & 1){
@@ -448,9 +459,11 @@ int main()
             al_draw_text(font, al_map_rgb(255, 255, 255), 920, 580, 0, "POSICAO");
             al_draw_text(font, al_map_rgb(255, 255, 255), 920, 600, 0, "CORRETA");
             al_draw_text(font, al_map_rgb(255, 255, 255), 920, 650, 0, "COR EXISTE");
-            if(mode==1){
-                al_draw_bitmap(final, SCREEN_W/2-400, SCREEN_H/2-400, 0);
-            }
+
+            if(mode == 1){
+                al_draw_filled_rectangle(SCREEN_W/9, SCREEN_H/9, SCREEN_W - SCREEN_W/9 , SCREEN_H - SCREEN_H/9, al_map_rgb(0,0,0));}
+
+
 
             al_flip_display();
 
@@ -462,6 +475,7 @@ int main()
 
     al_destroy_font(font);
     al_destroy_display(disp);
+    al_destroy_sample(deep_Urban);
     al_destroy_timer(timer);
     al_destroy_event_queue(queue);
 
