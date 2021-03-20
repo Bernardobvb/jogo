@@ -23,15 +23,19 @@ int fResposta(ALLEGRO_COLOR matrizResposta[7][4], int seq[],int v[4], int a, ALL
                             if (seq[0] == v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] == v[3]){
                             matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = matrizResposta[c][3] = branco;
                             return 1;
+
                             }else if(seq[0] == v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] != v[3]){
                             matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = branco;
                             matrizResposta[c][3] = cinza;
+
                             }else if (seq[0] == v[0] && seq[1] == v[1] && seq[2] != v[2] && seq[3] == v[3]){
                             matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = branco;
                             matrizResposta[c][3] = cinza;
+
                             }else if (seq[0] == v[0] && seq[1] != v[1] && seq[2] == v[2] && seq[3] == v[3]){
                             matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = branco;
                             matrizResposta[c][3] = cinza;
+
                             }else if (seq[0] != v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] == v[3]){
                             matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = branco;
                             matrizResposta[c][3] = cinza;
@@ -43,41 +47,46 @@ int fResposta(ALLEGRO_COLOR matrizResposta[7][4], int seq[],int v[4], int a, ALL
                                 if (seq[0] == v[1]){
                                     matrizResposta[c][2] = vermelho;
                                     cont = 0;
-                                 if (seq[1] == v[0]){
+                                    if (seq[1] == v[0]){
                                     matrizResposta[c][3-cont] = vermelho;}}}
-                           else if(seq[0] != v[0] && seq[1] == v[1] && seq[2] != v[2] && seq[3] == v[3]){
+
+                            else if(seq[0] != v[0] && seq[1] == v[1] && seq[2] != v[2] && seq[3] == v[3]){
                                 matrizResposta[c][0] = matrizResposta[c][1] = branco;
                                 int cont = 1;
                                 if (seq[0] == v[2]){
                                     matrizResposta[c][2] = vermelho;
                                     cont = 0;
-                                 if (seq[2] == v[0]){
+                                    if (seq[2] == v[0]){
                                     matrizResposta[c][3-cont] = vermelho;}}}
+
                             else if(seq[0] != v[0] && seq[1] == v[1] && seq[2] == v[2] && seq[3] != v[3]){
                                 matrizResposta[c][0] = matrizResposta[c][1] = branco;
                                 int cont = 1;
                                 if (seq[0] == v[3]){
                                     matrizResposta[c][2] = vermelho;
                                     cont = 0;
-                                   if (seq[3] == v[0]){
+                                    if (seq[3] == v[0]){
                                     matrizResposta[c][3-cont] = vermelho;}}}
+
                             else if(seq[0] == v[0] && seq[1] != v[1] && seq[2] != v[2] && seq[3] == v[3]){
                                 matrizResposta[c][0] = matrizResposta[c][1] = branco;
                                 int cont =1;
                                 if (seq[1] == v[2]){
                                     matrizResposta[c][2] = vermelho;
                                     cont = 0;
-                                if (seq[2] == v[1]){
+                                    if (seq[2] == v[1]){
                                     matrizResposta[c][3-cont] = vermelho;}}}
-                             else if(seq[0] == v[0] && seq[1] != v[1] && seq[2] == v[2] && seq[3] != v[3]){
+
+                            else if(seq[0] == v[0] && seq[1] != v[1] && seq[2] == v[2] && seq[3] != v[3]){
                                 matrizResposta[c][0] = matrizResposta[c][1] = branco;
                                 int cont =1;
                                 if (seq[1] == v[3]){
                                     matrizResposta[c][2] = vermelho;
                                     cont = 0;
-                                 if (seq[3] == v[1]){
+                                    if (seq[3] == v[1]){
                                     matrizResposta[c][3-cont] = vermelho;}}}
-                             else if(seq[0] == v[0] && seq[1] == v[1] && seq[2] != v[2] && seq[3] != v[3]){
+
+                            else if(seq[0] == v[0] && seq[1] == v[1] && seq[2] != v[2] && seq[3] != v[3]){
                                 matrizResposta[c][0] = matrizResposta[c][1] = branco;
                                 int cont =1;
                                 if (seq[2] == v[3]){
@@ -92,37 +101,37 @@ int fResposta(ALLEGRO_COLOR matrizResposta[7][4], int seq[],int v[4], int a, ALL
                                     if (seq[1] == v[2] || seq[1] == v[3]){
                                         matrizResposta[c][1]=vermelho;
                                         cont = 1;
-                                      if(seq[2] == v[1] || seq[2] == v[3]){
+                                        if(seq[2] == v[1] || seq[2] == v[3]){
                                         matrizResposta[c][3-cont] = vermelho;
                                         cont = 0;
-                                       if(seq[3] == v[1] || seq[3] == v[2]){
-                                        matrizResposta[c][3-cont] = vermelho;
-                                       }}}}
+                                            if(seq[3] == v[1] || seq[3] == v[2]){
+                                                matrizResposta[c][3-cont] = vermelho; }}}}
+
                             else if (seq[0] != v[0] && seq[1] == v[1] && seq[2] != v[2] && seq[3] != v[3]){
                                     matrizResposta [c][0] = branco;
                                     int cont = 2;
                                     if (seq[0] == v[2] || seq[0] == v[3]){
                                         matrizResposta[c][1]=vermelho;
                                         cont = 1;
-                                      if(seq[2] == v[0] || seq[2] == v[3]){
+                                        if(seq[2] == v[0] || seq[2] == v[3]){
                                         matrizResposta[c][3-cont] = vermelho;
                                         cont = 0;
-                                       if(seq[3] == v[0] || seq[3] == v[2]){
-                                        matrizResposta[c][3-cont] = vermelho;
-                                       }}}}
-                              else if (seq[0] != v[0] && seq[1] != v[1] && seq[2] == v[2] && seq[3] != v[3]){
+                                            if(seq[3] == v[0] || seq[3] == v[2]){
+                                                matrizResposta[c][3-cont] = vermelho;}}}}
+
+                            else if (seq[0] != v[0] && seq[1] != v[1] && seq[2] == v[2] && seq[3] != v[3]){
                                     matrizResposta [c][0] = branco;
                                     int cont = 2;
                                     if (seq[0] == v[1] || seq[0] == v[3]){
                                         matrizResposta[c][1]=vermelho;
                                         cont = 1;
-                                      if(seq[1] == v[0] || seq[1] == v[3]){
+                                        if(seq[1] == v[0] || seq[1] == v[3]){
                                         matrizResposta[c][3-cont] = vermelho;
                                         cont = 0;
-                                       if(seq[3] == v[0] || seq[3] == v[1]){
-                                        matrizResposta[c][3-cont] = vermelho;
-                                       }}}}
-                                else if (seq[0] != v[0] && seq[1] != v[1] && seq[2] != v[2] && seq[3] == v[3]){
+                                            if(seq[3] == v[0] || seq[3] == v[1]){
+                                            matrizResposta[c][3-cont] = vermelho; }}}}
+
+                            else if (seq[0] != v[0] && seq[1] != v[1] && seq[2] != v[2] && seq[3] == v[3]){
                                     matrizResposta [c][0] = branco;
                                     int cont = 2;
                                     if (seq[0] == v[1] || seq[0] == v[2]){
@@ -131,10 +140,10 @@ int fResposta(ALLEGRO_COLOR matrizResposta[7][4], int seq[],int v[4], int a, ALL
                                       if(seq[1] == v[0] || seq[1] == v[2]){
                                         matrizResposta[c][3-cont] = vermelho;
                                         cont = 0;
-                                       if(seq[2] == v[0] || seq[2] == v[1]){
-                                        matrizResposta[c][3-cont] = vermelho;
-                                       }}}}
-                                else if (seq[0] != v[0] && seq[1] != v[1] && seq[2] != v[2] && seq[3] != v[3]){
+                                            if(seq[2] == v[0] || seq[2] == v[1]){
+                                            matrizResposta[c][3-cont] = vermelho;}}}}
+
+                            else if (seq[0] != v[0] && seq[1] != v[1] && seq[2] != v[2] && seq[3] != v[3]){
                                     matrizResposta[c][0] = matrizResposta[c][1] = matrizResposta[c][2] = matrizResposta[c][3] = vermelho;
                                 }
 
@@ -271,6 +280,53 @@ int main()
 
                     if (event.mouse.button & 1){
 
+                        if(event.mouse.x >= SCREEN_W/9 &&
+                            event.mouse.x <= SCREEN_W - SCREEN_W/9 && event.mouse.y <= SCREEN_H - SCREEN_H/9 &&
+                            event.mouse.y >= SCREEN_H/9 && mode == 1){
+
+                            mode = 0;
+                            al_play_sample(deep_Urban, 0.1, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
+                            for(i=0; i<7; i++){
+                                for(j=0; j<4; j++){
+                                    matrizResposta[i][j] = cinza;}}
+                            for(i=0; i<7; i++){
+                                for(j=0; j<4; j++){
+                                    matriz[i][j] = branco;}}
+
+                            for(i = 0;  i<4; i++){
+
+                                int c = 0;
+                                c = rand()%4;
+                                v[i] = c;}
+
+                            printf("%d -- %d -- %d -- %d ", v[0], v[1], v[2], v[3]);
+                            }
+
+
+                    if(event.mouse.x >= SCREEN_W/9 &&
+                            event.mouse.x <= SCREEN_W - SCREEN_W/9 && event.mouse.y <= SCREEN_H - SCREEN_H/9 &&
+                            event.mouse.y >= SCREEN_H/9 && cc == 7){
+
+                            cc = 0;
+                            cl = 0;
+                            for(i=0; i<7; i++){
+                                for(j=0; j<4; j++){
+                                    matrizResposta[i][j] = cinza;}}
+                            for(i=0; i<7; i++){
+                                for(j=0; j<4; j++){
+                                    matriz[i][j] = branco;}}
+
+                            for(i = 0;  i<4; i++){
+
+                                int c = 0;
+                                c = rand()%4;
+                                v[i] = c;}
+
+                            printf("%d -- %d -- %d -- %d ", v[0], v[1], v[2], v[3]);
+
+
+                    }
+
                     if (event.mouse.x >= 895 &&
                 event.mouse.x <= 975 && event.mouse.y <= 140 &&
                 event.mouse.y >= 60){
@@ -324,6 +380,7 @@ int main()
                             }else if(event.mouse.x >= 600 && event.mouse.x <= 700 && event.mouse.y <= 700 && event.mouse.y >= 650 ){
                                  if(cc==6){
                                        mode = fResposta( matrizResposta, seq, v, 6 , branco,  vermelho, cinza);
+                                 if(mode != 1)
                                  cc=7;}
 
                             }
@@ -469,8 +526,11 @@ int main()
 
             if(mode == 1){
                     int ponto = 10 - cc;
-                    al_destroy_sample(deep_Urban);
+
+                    al_stop_sample(deep_Urban);
+
                     al_draw_filled_rectangle(SCREEN_W/9, SCREEN_H/9, SCREEN_W - SCREEN_W/9 , SCREEN_H - SCREEN_H/9, al_map_rgb(0,0,0));
+                    al_draw_text(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 50, SCREEN_H/2 - 30, 0, "PARABENS");
                     al_draw_text(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 50, SCREEN_H/2, 0, "VOCE GANHOU");
                     al_draw_text(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 50, SCREEN_H/2 + 30, 0, "SUA PONTUACAO");
             }
