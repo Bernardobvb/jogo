@@ -285,6 +285,8 @@ int main()
                             event.mouse.y >= SCREEN_H/9 && mode == 1){
 
                             mode = 0;
+                            cc = 0;
+                            cl = 0;
                             al_play_sample(deep_Urban, 0.1, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
                             for(i=0; i<7; i++){
                                 for(j=0; j<4; j++){
@@ -299,7 +301,7 @@ int main()
                                 c = rand()%4;
                                 v[i] = c;}
 
-                            printf("%d -- %d -- %d -- %d ", v[0], v[1], v[2], v[3]);
+                            printf("\n%d -- %d -- %d -- %d ", v[0], v[1], v[2], v[3]);
                             }
 
 
@@ -525,18 +527,18 @@ int main()
             al_draw_text(font, al_map_rgb(255, 255, 255), 920, 650, 0, "COR EXISTE");
 
             if(mode == 1){
-                    int ponto = 10 - cc;
-
-                    al_stop_sample(deep_Urban);
+                    int ponto = 11 - cc;
+                    char pontuacao[3];
+                    itoa(ponto, pontuacao, 10);
 
                     al_draw_filled_rectangle(SCREEN_W/9, SCREEN_H/9, SCREEN_W - SCREEN_W/9 , SCREEN_H - SCREEN_H/9, al_map_rgb(0,0,0));
                     al_draw_text(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 50, SCREEN_H/2 - 30, 0, "PARABENS");
                     al_draw_text(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 50, SCREEN_H/2, 0, "VOCE GANHOU");
-                    al_draw_text(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 50, SCREEN_H/2 + 30, 0, "SUA PONTUACAO");
+                    al_draw_textf(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 50, SCREEN_H/2 + 30, 0, "SUA PONTUACAO: %s", pontuacao);
             }
 
             if(cc == 7){
-                    al_destroy_sample(deep_Urban);
+
                     al_draw_filled_rectangle(SCREEN_W/9, SCREEN_H/9, SCREEN_W - SCREEN_W/9 , SCREEN_H - SCREEN_H/9, al_map_rgb(0,0,0));
                     al_draw_text(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 50, SCREEN_H/2, 0, "VOCE PERDEU");
                     al_draw_text(font, al_map_rgb(255, 255, 255), SCREEN_W/2 - 100, SCREEN_H/2 + 30, 0, "CLIQUE PARA REINICIAR");}
